@@ -1,12 +1,14 @@
-import { MessageCircle } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { MessageCircle } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const WhatsAppCTA = () => {
   const handleWhatsAppClick = () => {
     // Replace with your actual WhatsApp number (format: country code + number without + or spaces)
-    const phoneNumber = '1234567890';
-    const message = encodeURIComponent('Hi Stephen! I found your portfolio and would like to discuss a project.');
-    window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+    const phoneNumber = "+2348133122252";
+    const message = encodeURIComponent(
+      "Hi Stephen! I found your portfolio and would like to discuss a project."
+    );
+    window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank");
   };
 
   return (
