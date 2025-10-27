@@ -30,9 +30,9 @@ const Navigation = () => {
           <a 
             href="#home" 
             onClick={(e) => { e.preventDefault(); scrollToSection('#home'); }}
-            className="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"
+            className="text-lg md:text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"
           >
-            SJ
+            Stephen | Tech
           </a>
 
           {/* Desktop Navigation */}
