@@ -156,93 +156,49 @@ const Index = () => {
       {/* Hero Section */}
       <section
         id="home"
-        className="relative pt-32 pb-20 px-4 min-h-screen flex items-center overflow-hidden"
-        style={{
-          backgroundImage: `url(${heroImage})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
+        className="pt-32 pb-20 px-4 min-h-screen flex items-center"
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/85 to-background"></div>
-        <div className="container mx-auto relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-block mb-4 animate-fade-in">
-              <Badge className="text-sm px-4 py-2 bg-primary/10 text-primary border-primary/20">
-                Available for new projects
-              </Badge>
-            </div>
-            <h1
-              className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 animate-fade-in"
-              style={{ animationDelay: "0.1s" }}
-            >
-              Hi, I'm{" "}
-              <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-glow">
-                Stephen James
-              </span>
-            </h1>
-            <p
-              className="text-2xl md:text-3xl text-primary mb-4 font-semibold animate-fade-in"
-              style={{ animationDelay: "0.2s" }}
-            >
-              Front-End Engineer
-            </p>
-            <p
-              className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto animate-fade-in"
-              style={{ animationDelay: "0.3s" }}
-            >
-              I craft <span className="text-primary font-semibold">fast</span>,{" "}
-              <span className="text-primary font-semibold">responsive</span>,
-              and{" "}
-              <span className="text-primary font-semibold">
-                visually engaging
-              </span>{" "}
-              web experiences using React, JavaScript, and modern front-end
-              technologies.
-            </p>
-            <div
-              className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in"
-              style={{ animationDelay: "0.4s" }}
-            >
-              <Button
-                asChild
-                size="lg"
-                className="text-base hover:shadow-[0_0_30px_hsl(217_91%_60%/0.5)]"
-              >
-                <a href="#projects">
-                  View My Work
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </a>
-              </Button>
-              <Button
-                asChild
-                size="lg"
-                variant="secondary"
-                className="text-base"
-              >
-                <a href="#contact">Contact Me</a>
-              </Button>
+        <div className="container mx-auto max-w-6xl">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Profile Image */}
+            <div className="flex justify-center lg:justify-end order-1 lg:order-2">
+              <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full bg-gradient-to-br from-primary via-accent to-primary p-1 animate-fade-in">
+                <div className="w-full h-full rounded-full bg-card flex items-center justify-center overflow-hidden">
+                  <div className="w-full h-full bg-muted flex items-center justify-center text-muted-foreground">
+                    {/* Replace this div with your image: <img src="your-image.jpg" alt="Stephen James" className="w-full h-full object-cover" /> */}
+                    <span className="text-6xl font-bold">SJ</span>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            {/* Floating stats */}
-            <div
-              className="grid grid-cols-3 gap-4 mt-16 max-w-2xl mx-auto animate-fade-in"
-              style={{ animationDelay: "0.5s" }}
-            >
-              <div className="p-4 rounded-lg bg-card/50 backdrop-blur-sm border border-border">
-                <div className="text-3xl font-bold text-primary">6+</div>
-                <div className="text-sm text-muted-foreground">Projects</div>
-              </div>
-              <div className="p-4 rounded-lg bg-card/50 backdrop-blur-sm border border-border">
-                <div className="text-3xl font-bold text-primary">4+</div>
-                <div className="text-sm text-muted-foreground">
-                  Years Coding
-                </div>
-              </div>
-              <div className="p-4 rounded-lg bg-card/50 backdrop-blur-sm border border-border">
-                <div className="text-3xl font-bold text-primary">100%</div>
-                <div className="text-sm text-muted-foreground">
-                  Satisfaction
-                </div>
+            {/* Text Content */}
+            <div className="order-2 lg:order-1 text-center lg:text-left">
+              <Badge className="mb-4 text-sm px-4 py-2 bg-primary/10 text-primary border-primary/20 animate-fade-in">
+                Available for new projects
+              </Badge>
+              <h1 className="text-4xl md:text-6xl font-bold mb-4 animate-fade-in" style={{ animationDelay: "0.1s" }}>
+                Hi, I'm{" "}
+                <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                  Stephen James
+                </span>
+              </h1>
+              <p className="text-xl md:text-2xl text-primary mb-6 font-semibold animate-fade-in" style={{ animationDelay: "0.2s" }}>
+                Front-End Engineer
+              </p>
+              <p className="text-lg text-muted-foreground mb-8 animate-fade-in" style={{ animationDelay: "0.3s" }}>
+                I craft fast, responsive, and visually engaging web experiences using React and modern front-end technologies.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in" style={{ animationDelay: "0.4s" }}>
+                <Button asChild size="lg">
+                  <a href="#projects">
+                    View My Work
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </a>
+                </Button>
+                <Button asChild size="lg" variant="outline">
+                  <a href="#contact">Contact Me</a>
+                </Button>
               </div>
             </div>
           </div>
@@ -297,92 +253,34 @@ const Index = () => {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 px-4 bg-card/30 scroll-mt-16">
-        <div className="container mx-auto max-w-6xl">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
+      <section id="about" className="py-20 px-4 scroll-mt-16">
+        <div className="container mx-auto max-w-4xl">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
             About Me
           </h2>
-
-          <div className="grid lg:grid-cols-2 gap-12 mb-20">
-            <div className="space-y-4 text-muted-foreground">
+          <Card className="p-8 md:p-12">
+            <div className="space-y-6 text-muted-foreground text-lg leading-relaxed">
               <p>
-                I'm Stephen James, a self-taught Front-End Engineer specializing
-                in React, JavaScript, and modern web technologies. My journey
-                into web development began with curiosity and evolved into a
-                passion for crafting beautiful, performant user interfaces.
+                I'm Stephen James, a self-taught Front-End Engineer specializing in React, JavaScript, and modern web technologies. My journey into web development began with curiosity and evolved into a passion for crafting beautiful, performant user interfaces.
               </p>
               <p>
-                What started as building simple websites quickly transformed
-                into mastering complex state management, responsive design
-                systems, and modern front-end architectures. I believe that
-                great code is not just functional—it's clean, maintainable, and
-                built with the end user in mind.
+                I believe that great code is not just functional—it's clean, maintainable, and built with the end user in mind. Today, I focus on building scalable React applications, implementing pixel-perfect designs, and optimizing web performance.
               </p>
-              <p>
-                Today, I focus on building scalable React applications,
-                implementing pixel-perfect designs, and optimizing web
-                performance. I'm constantly learning new technologies and best
-                practices to stay at the forefront of front-end development.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4">
-              {[
-                "Write clean, maintainable code",
-                "Prioritize user experience",
-                "Stay curious and keep learning",
-                "Collaborate and communicate effectively",
-                "Build accessible applications",
-                "Optimize for performance",
-              ].map((value) => (
-                <div
-                  key={value}
-                  className="flex items-start gap-2 p-4 rounded-lg bg-card border border-border"
-                >
-                  <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-muted-foreground">{value}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Timeline */}
-          <div className="relative max-w-4xl mx-auto">
-            <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-border md:left-1/2"></div>
-
-            <div className="space-y-12">
-              {milestones.map((milestone, index) => (
-                <div
-                  key={milestone.year}
-                  className={`relative flex items-start gap-8 ${
-                    index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                  }`}
-                >
-                  <div
-                    className={`flex-1 ${
-                      index % 2 === 0 ? "md:text-right" : "md:text-left"
-                    }`}
-                  >
-                    <Card className="inline-block p-6 hover:shadow-[0_0_20px_hsl(217_91%_60%/0.2)] transition-shadow">
-                      <div className="text-primary font-bold mb-2">
-                        {milestone.year}
-                      </div>
-                      <h3 className="text-lg font-bold mb-2">
-                        {milestone.title}
-                      </h3>
-                      <p className="text-muted-foreground text-sm">
-                        {milestone.description}
-                      </p>
-                    </Card>
+              <div className="grid sm:grid-cols-2 gap-3 pt-6">
+                {[
+                  "Clean, maintainable code",
+                  "User experience first",
+                  "Performance optimization",
+                  "Accessible applications",
+                ].map((value) => (
+                  <div key={value} className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0" />
+                    <span className="text-base">{value}</span>
                   </div>
-
-                  <div className="absolute left-0 md:left-1/2 top-6 w-4 h-4 rounded-full bg-primary border-4 border-background -translate-x-[7px] md:-translate-x-1/2"></div>
-
-                  <div className="flex-1 hidden md:block"></div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
+          </Card>
         </div>
       </section>
 
@@ -408,58 +306,29 @@ const Index = () => {
 
       {/* Skills Section */}
       <section id="skills" className="py-20 px-4 bg-card/30 scroll-mt-16">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Skills & Expertise
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              A comprehensive overview of my technical abilities and
-              professional competencies
-            </p>
-          </div>
+        <div className="container mx-auto max-w-5xl">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+            Skills & Expertise
+          </h2>
 
-          <div className="space-y-12 mb-20">
-            {skillCategories.map((category, categoryIndex) => (
-              <div key={category.title}>
-                <h3 className="text-2xl font-bold mb-6">{category.title}</h3>
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid md:grid-cols-3 gap-8">
+            {skillCategories.map((category) => (
+              <Card key={category.title} className="p-6">
+                <h3 className="text-xl font-bold mb-4 text-primary">{category.title}</h3>
+                <div className="flex flex-wrap gap-2">
                   {category.skills.map((skill) => (
-                    <Card
+                    <Badge
                       key={skill.name}
-                      className="p-4 hover:shadow-[0_0_20px_hsl(217_91%_60%/0.2)] transition-shadow"
+                      variant="secondary"
+                      className="text-sm"
                     >
-                      <div className="flex flex-col gap-2">
-                        <span className="font-medium">{skill.name}</span>
-                        <Badge
-                          className={`${getLevelColor(
-                            skill.level
-                          )} w-fit text-xs`}
-                        >
-                          {skill.level}
-                        </Badge>
-                      </div>
-                    </Card>
+                      {skill.name}
+                    </Badge>
                   ))}
                 </div>
-              </div>
+              </Card>
             ))}
           </div>
-
-          <Card className="p-8 bg-gradient-to-br from-card to-card/50 border-primary/20">
-            <h3 className="text-2xl font-bold mb-6">Currently Learning</h3>
-            <div className="grid md:grid-cols-2 gap-4">
-              {currentlyLearning.map((item) => (
-                <div
-                  key={item}
-                  className="flex items-start gap-3 p-4 rounded-lg bg-background/50"
-                >
-                  <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0"></div>
-                  <span className="text-muted-foreground">{item}</span>
-                </div>
-              ))}
-            </div>
-          </Card>
         </div>
       </section>
 
