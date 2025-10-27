@@ -254,33 +254,55 @@ const Index = () => {
 
       {/* About Section */}
       <section id="about" className="py-20 px-4 scroll-mt-16">
-        <div className="container mx-auto max-w-4xl">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+        <div className="container mx-auto max-w-6xl">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
             About Me
           </h2>
-          <Card className="p-8 md:p-12">
-            <div className="space-y-6 text-muted-foreground text-lg leading-relaxed">
-              <p>
-                I'm Stephen James, a self-taught Front-End Engineer specializing in React, JavaScript, and modern web technologies. My journey into web development began with curiosity and evolved into a passion for crafting beautiful, performant user interfaces.
-              </p>
-              <p>
-                I believe that great code is not just functional—it's clean, maintainable, and built with the end user in mind. Today, I focus on building scalable React applications, implementing pixel-perfect designs, and optimizing web performance.
-              </p>
-              <div className="grid sm:grid-cols-2 gap-3 pt-6">
-                {[
-                  "Clean, maintainable code",
-                  "User experience first",
-                  "Performance optimization",
-                  "Accessible applications",
-                ].map((value) => (
-                  <div key={value} className="flex items-center gap-2">
-                    <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0" />
-                    <span className="text-base">{value}</span>
-                  </div>
-                ))}
+          
+          <div className="grid lg:grid-cols-2 gap-8 mb-12">
+            <Card className="p-8 border-primary/20 bg-gradient-to-br from-card to-card/50">
+              <div className="flex items-start gap-4 mb-6">
+                <div className="p-3 rounded-lg bg-primary/10">
+                  <Code className="h-6 w-6 text-primary" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold mb-2">My Journey</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    I'm a self-taught Front-End Engineer specializing in React, JavaScript, and modern web technologies. My journey into web development began with curiosity and evolved into a passion for crafting beautiful, performant user interfaces.
+                  </p>
+                </div>
               </div>
-            </div>
-          </Card>
+            </Card>
+
+            <Card className="p-8 border-primary/20 bg-gradient-to-br from-card to-card/50">
+              <div className="flex items-start gap-4 mb-6">
+                <div className="p-3 rounded-lg bg-primary/10">
+                  <Zap className="h-6 w-6 text-primary" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold mb-2">My Philosophy</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    I believe that great code is not just functional—it's clean, maintainable, and built with the end user in mind. I focus on building scalable React applications and optimizing web performance.
+                  </p>
+                </div>
+              </div>
+            </Card>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              { icon: Code, label: "Clean Code", desc: "Maintainable & scalable" },
+              { icon: Zap, label: "Performance", desc: "Optimized & fast" },
+              { icon: Palette, label: "User Experience", desc: "Beautiful & intuitive" },
+              { icon: CheckCircle2, label: "Accessible", desc: "For everyone" },
+            ].map((item) => (
+              <Card key={item.label} className="p-6 text-center hover:border-primary/50 transition-colors">
+                <item.icon className="h-8 w-8 text-primary mx-auto mb-3" />
+                <h4 className="font-bold mb-1">{item.label}</h4>
+                <p className="text-sm text-muted-foreground">{item.desc}</p>
+              </Card>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -306,29 +328,63 @@ const Index = () => {
 
       {/* Skills Section */}
       <section id="skills" className="py-20 px-4 bg-card/30 scroll-mt-16">
-        <div className="container mx-auto max-w-5xl">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+        <div className="container mx-auto max-w-6xl">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
             Skills & Expertise
           </h2>
+          <p className="text-center text-muted-foreground mb-16 max-w-2xl mx-auto">
+            Technologies and tools I use to bring ideas to life
+          </p>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="space-y-8">
             {skillCategories.map((category) => (
-              <Card key={category.title} className="p-6">
-                <h3 className="text-xl font-bold mb-4 text-primary">{category.title}</h3>
-                <div className="flex flex-wrap gap-2">
+              <Card key={category.title} className="p-8 border-primary/20 bg-gradient-to-br from-card to-card/50">
+                <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
+                  <div className="h-1 w-12 bg-gradient-to-r from-primary to-accent rounded-full"></div>
+                  {category.title}
+                </h3>
+                <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
                   {category.skills.map((skill) => (
-                    <Badge
+                    <div
                       key={skill.name}
-                      variant="secondary"
-                      className="text-sm"
+                      className="group p-4 rounded-lg bg-background/50 hover:bg-background transition-all hover:shadow-md hover:scale-105 duration-200"
                     >
-                      {skill.name}
-                    </Badge>
+                      <div className="flex items-center justify-between">
+                        <span className="font-medium">{skill.name}</span>
+                        <div className={`w-2 h-2 rounded-full ${
+                          skill.level === 'Expert' 
+                            ? 'bg-primary' 
+                            : skill.level === 'Advanced' 
+                            ? 'bg-accent' 
+                            : 'bg-secondary'
+                        }`}></div>
+                      </div>
+                      <span className="text-xs text-muted-foreground">{skill.level}</span>
+                    </div>
                   ))}
                 </div>
               </Card>
             ))}
           </div>
+
+          <Card className="mt-12 p-8 border-primary/20 bg-gradient-to-br from-primary/5 to-accent/5">
+            <div className="flex items-start gap-4">
+              <div className="p-3 rounded-lg bg-primary/10">
+                <Zap className="h-6 w-6 text-primary" />
+              </div>
+              <div className="flex-1">
+                <h3 className="text-xl font-bold mb-4">Currently Learning</h3>
+                <div className="grid sm:grid-cols-2 gap-3">
+                  {currentlyLearning.map((item) => (
+                    <div key={item} className="flex items-center gap-2">
+                      <ArrowRight className="h-4 w-4 text-primary flex-shrink-0" />
+                      <span className="text-muted-foreground">{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </Card>
         </div>
       </section>
 
