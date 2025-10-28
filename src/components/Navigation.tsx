@@ -1,6 +1,13 @@
 import { useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from '@/components/ui/sheet';
 import ThemeToggle from '@/components/ThemeToggle';
 
 const Navigation = () => {
@@ -50,42 +57,70 @@ const Navigation = () => {
                 {link.label}
               </a>
             ))}
+            <Button
+              variant="outline"
+              size="sm"
+              className="gap-2"
+              onClick={() => {
+                // Create a download link for CV
+                const link = document.createElement('a');
+                link.href = '/cv.pdf'; // You'll need to add your CV file to the public folder
+                link.download = 'Stephen-James-CV.pdf';
+                link.click();
+              }}
+            >
+              <Download className="h-4 w-4" />
+              Download CV
+            </Button>
             <ThemeToggle />
           </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center gap-2">
             <ThemeToggle />
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setIsOpen(!isOpen)}
-            >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </Button>
+            <Sheet open={isOpen} onOpenChange={setIsOpen}>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon">
+                  <Menu className="h-6 w-6" />
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+                <SheetHeader>
+                  <SheetTitle className="text-left">Menu</SheetTitle>
+                </SheetHeader>
+                <div className="flex flex-col gap-6 mt-8">
+                  {navLinks.map((link) => (
+                    <a
+                      key={link.to}
+                      href={link.to}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        scrollToSection(link.to);
+                      }}
+                      className="text-lg font-medium transition-colors hover:text-primary text-muted-foreground py-2 border-b border-border hover:border-primary"
+                    >
+                      {link.label}
+                    </a>
+                  ))}
+                  <Button
+                    variant="default"
+                    className="w-full gap-2 mt-4"
+                    onClick={() => {
+                      const link = document.createElement('a');
+                      link.href = '/cv.pdf';
+                      link.download = 'Stephen-James-CV.pdf';
+                      link.click();
+                      setIsOpen(false);
+                    }}
+                  >
+                    <Download className="h-4 w-4" />
+                    Download CV
+                  </Button>
+                </div>
+              </SheetContent>
+            </Sheet>
           </div>
         </div>
-
-        {/* Mobile Navigation */}
-        {isOpen && (
-          <div className="md:hidden py-4 animate-fade-in">
-            <div className="flex flex-col gap-4">
-              {navLinks.map((link) => (
-                <a
-                  key={link.to}
-                  href={link.to}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToSection(link.to);
-                  }}
-                  className="text-sm font-medium transition-colors hover:text-primary text-muted-foreground"
-                >
-                  {link.label}
-                </a>
-              ))}
-            </div>
-          </div>
-        )}
       </div>
     </nav>
   );
