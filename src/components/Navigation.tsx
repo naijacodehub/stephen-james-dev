@@ -1,30 +1,30 @@
-import { useState } from 'react';
-import { Menu, X, Download } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { useState } from "react";
+import { Menu, X, Download } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import {
   Sheet,
   SheetContent,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from '@/components/ui/sheet';
-import ThemeToggle from '@/components/ThemeToggle';
+} from "@/components/ui/sheet";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
-    { to: '#home', label: 'Home' },
-    { to: '#about', label: 'About' },
-    { to: '#projects', label: 'Projects' },
-    { to: '#skills', label: 'Skills' },
-    { to: '#contact', label: 'Contact' },
+    { to: "#home", label: "Home" },
+    { to: "#about", label: "About" },
+    { to: "#projects", label: "Projects" },
+    { to: "#skills", label: "Skills" },
+    { to: "#contact", label: "Contact" },
   ];
 
   const scrollToSection = (id: string) => {
     const element = document.querySelector(id);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
     }
     setIsOpen(false);
   };
@@ -34,9 +34,12 @@ const Navigation = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <a 
-            href="#home" 
-            onClick={(e) => { e.preventDefault(); scrollToSection('#home'); }}
+          <a
+            href="#home"
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToSection("#home");
+            }}
             className="text-lg md:text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"
           >
             Stephen | Tech
@@ -63,9 +66,9 @@ const Navigation = () => {
               className="gap-2"
               onClick={() => {
                 // Create a download link for CV
-                const link = document.createElement('a');
-                link.href = '/cv.pdf'; // You'll need to add your CV file to the public folder
-                link.download = 'Stephen-James-CV.pdf';
+                const link = document.createElement("a");
+                link.href = "./stephen-dev.pdf"; // You'll need to add your CV file to the public folder
+                link.download = "stephen-dev.pdf";
                 link.click();
               }}
             >
@@ -106,9 +109,9 @@ const Navigation = () => {
                     variant="default"
                     className="w-full gap-2 mt-4"
                     onClick={() => {
-                      const link = document.createElement('a');
-                      link.href = '/cv.pdf';
-                      link.download = 'Stephen-James-CV.pdf';
+                      const link = document.createElement("a");
+                      link.href = "/cv.pdf";
+                      link.download = "Stephen-James-CV.pdf";
                       link.click();
                       setIsOpen(false);
                     }}
