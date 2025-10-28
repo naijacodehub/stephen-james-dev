@@ -10,6 +10,7 @@ import {
   Mail,
   MapPin,
   Send,
+  Download,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -302,6 +303,22 @@ const Index = () => {
                 <p className="text-xs sm:text-sm text-muted-foreground">{item.desc}</p>
               </Card>
             ))}
+          </div>
+
+          <div className="flex justify-center mt-8 sm:mt-12">
+            <Button
+              size="lg"
+              className="gap-2 group"
+              onClick={() => {
+                const link = document.createElement('a');
+                link.href = '/cv.pdf';
+                link.download = 'Stephen-James-CV.pdf';
+                link.click();
+              }}
+            >
+              <Download className="h-5 w-5 group-hover:animate-pulse" />
+              Download My CV
+            </Button>
           </div>
         </div>
       </section>
