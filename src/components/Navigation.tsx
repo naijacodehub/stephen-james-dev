@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { Menu, X, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -30,25 +31,32 @@ const Navigation = () => {
   };
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-lg border-b border-border">
+    <motion.nav 
+      className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-lg border-b border-border"
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.3 }}
+    >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <a
+          <motion.a
             href="#home"
             onClick={(e) => {
               e.preventDefault();
               scrollToSection("#home");
             }}
             className="text-lg md:text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.2 }}
           >
             Stephen | Tech
-          </a>
+          </motion.a>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <a
+            {navLinks.map((link, index) => (
+              <motion.a
                 key={link.to}
                 href={link.to}
                 onClick={(e) => {
@@ -56,25 +64,34 @@ const Navigation = () => {
                   scrollToSection(link.to);
                 }}
                 className="text-sm font-medium transition-colors hover:text-primary text-muted-foreground"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ y: -2 }}
               >
                 {link.label}
-              </a>
+              </motion.a>
             ))}
-            <Button
-              variant="outline"
-              size="sm"
-              className="gap-2"
-              onClick={() => {
-                // Create a download link for CV
-                const link = document.createElement("a");
-                link.href = "./stephen-dev.pdf"; // You'll need to add your CV file to the public folder
-                link.download = "stephen-dev.pdf";
-                link.click();
-              }}
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: navLinks.length * 0.1 }}
             >
-              <Download className="h-4 w-4" />
-              Download CV
-            </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                className="gap-2"
+                onClick={() => {
+                  const link = document.createElement("a");
+                  link.href = "./stephen-dev.pdf";
+                  link.download = "stephen-dev.pdf";
+                  link.click();
+                }}
+              >
+                <Download className="h-4 w-4" />
+                Download CV
+              </Button>
+            </motion.div>
             <ThemeToggle />
           </div>
 
@@ -125,7 +142,7 @@ const Navigation = () => {
           </div>
         </div>
       </div>
-    </nav>
+    </motion.nav>
   );
 };
 
